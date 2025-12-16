@@ -7,6 +7,7 @@ interface UserStoreState {
   count: number;
   otroEstado: string;
   objetoEstado: { clave: string; otro: number; arreglo: number[] };
+  arrayEstado: unknown[];
   increment: () => void;
 }
 
@@ -18,6 +19,7 @@ const useUserStore = create<UserStoreState>()(
       count: 0,
       otroEstado: "valorInicial",
       objetoEstado: { clave: "valor", otro: 123, arreglo: [1, 2, 3] },
+      arrayEstado: [6, 'seis', 666],
 
       // acciones
       increment: () =>
@@ -27,9 +29,11 @@ const useUserStore = create<UserStoreState>()(
     })),
     {
       name: "user-storage",
-      version: 4,
+      version: 5,
       partialize: (state) => ({
         count: state.count,
+        otroEstado: state.otroEstado,
+        arrayEstado: state.arrayEstado,
       }),
       migrate: (persistedState, version) => {
         console.log(`Migrando desde version ${version}:`, persistedState);
@@ -40,6 +44,7 @@ const useUserStore = create<UserStoreState>()(
           return {
             count: state.count || 666,
             otroEstado: state.otroEstado || "valorMigradoV2",
+            arrayEstado: state.arrayEstado || [],
           };
         }
 
