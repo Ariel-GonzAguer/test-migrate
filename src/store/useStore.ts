@@ -27,7 +27,7 @@ const useUserStore = create<UserStoreState>()(
     })),
     {
       name: "user-storage",
-      version: 3,
+      version: 4,
       partialize: (state) => ({
         count: state.count,
       }),
