@@ -1,12 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import useUserStore from './store/useStore'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import useUserStore from "./store/useStore";
 
 function App() {
-  const [count, setCount] = useState(0)
-  const { count: storeCount, increment, otroEstado, objetoEstado } = useUserStore()
+  const [count, setCount] = useState(0);
+  const {
+    count: storeCount,
+    increment,
+    otroEstado,
+    objetoEstado,
+  } = useUserStore();
 
   return (
     <>
@@ -24,14 +29,19 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        
+        <button onClick={() => window.location.reload()}>Recargar</button>
+
         <h2>Estado Global (Store)</h2>
-        <p>Count Store: <strong>{storeCount}</strong></p>
-        <p>Otro Estado: <strong>{otroEstado}</strong></p>
-        <p>Objeto Estado: <strong>{JSON.stringify(objetoEstado)}</strong></p>
-        <button onClick={increment}>
-          Increment Store Count
-        </button>
+        <p>
+          Count Store: <strong>{storeCount}</strong>
+        </p>
+        <p>
+          Otro Estado: <strong>{otroEstado}</strong>
+        </p>
+        <p>
+          Objeto Estado: <strong>{JSON.stringify(objetoEstado)}</strong>
+        </p>
+        <button onClick={increment}>Increment Store Count</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -40,7 +50,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

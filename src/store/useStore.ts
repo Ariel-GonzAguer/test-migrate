@@ -27,18 +27,19 @@ const useUserStore = create<UserStoreState>()(
     })),
     {
       name: "user-storage",
-      version: 2,
+      version: 3,
       partialize: (state) => ({
         count: state.count,
       }),
       migrate: (persistedState, version) => {
         console.log(`Migrando desde version ${version}:`, persistedState);
 
-        if (version === 0) {
+        if (version === 3) {
           // Lógica de migración de v1 a v2
-          const state = persistedState as { count?: number };
+          const state = persistedState as Partial<UserStoreState>;
           return {
-            count: state.count || 0,
+            count: state.count || 666,
+            otroEstado: state.otroEstado || "valorMigradoV2",
           };
         }
 
