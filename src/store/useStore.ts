@@ -34,7 +34,7 @@ const useUserStore = create<UserStoreState>()(
       migrate: (persistedState, version) => {
         console.log(`Migrando desde version ${version}:`, persistedState);
 
-        if (version === 3) {
+        if (version === 0) {
           // Lógica de migración de v1 a v2
           const state = persistedState as Partial<UserStoreState>;
           return {
