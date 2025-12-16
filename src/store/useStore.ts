@@ -27,11 +27,12 @@ const useUserStore = create<UserStoreState>()(
     })),
     {
       name: "user-storage",
+      version: 1,
       partialize: (state) => ({
         count: state.count,
         otroEstado: state.otroEstado,
         objetoEstado: state.objetoEstado,
-      }), // persistir solo el estado 'count'
+      }),
     }
   )
 );
